@@ -113,9 +113,8 @@ describe("DELETE /api/v1/books endpoint", () => {
   test("status code successfully 200 for deleting a valid book", async () => {
     // Act
     const res = await request(app)
-      .delete("/api/v1/books")
-      .send({ bookId: 2, title: "Before the Coffee Gets Cold", author: "Toshikazu Kawaguchi" });
-
+      .delete("/api/v1/books/2")
+      
     // Assert
     expect(res.statusCode).toEqual(200);
   });
