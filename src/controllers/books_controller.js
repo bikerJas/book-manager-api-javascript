@@ -39,7 +39,11 @@ const deleteBook = async (req, res) => {
   const bookDeleteData = req.body;
   const bookId = req.params.bookId;
   const book = await bookService.deleteBook(bookId, bookDeleteData);
-  res.json(book).status(200);
+  if (book) {
+    res.json(book).status(200);
+  } else {
+    res.status(404).json("Not found");
+  }
 };
 
 module.exports = {

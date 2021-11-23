@@ -124,7 +124,7 @@ describe("DELETE /api/v1/books endpoint", () => {
     // Arrange
     bookService.deleteBook = jest.fn().mockReturnValue(undefined);
     // Act
-    const res = await request(app).get("/api/v1/books/6");
+    const res = await request(app).delete("/api/v1/books/6");
 
     // Assert
     expect(res.statusCode).toEqual(404);
