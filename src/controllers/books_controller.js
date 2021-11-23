@@ -1,4 +1,4 @@
-const {bookService} = require('../services');
+const { bookService } = require("../services");
 
 const getBooks = async (req, res) => {
   const books = await bookService.getBooks();
@@ -12,7 +12,7 @@ const getBook = async (req, res) => {
   if (book) {
     res.json(book).status(200);
   } else {
-    res.status(404).json('Not found');
+    res.status(404).json("Not found");
   }
 };
 
@@ -21,9 +21,8 @@ const saveBook = async (req, res) => {
   try {
     const book = await bookService.saveBook(bookToBeSaved);
     res.status(201).json(book);
-  }
-  catch(error) {
-    res.status(400).json({message: error.message});
+  } catch (error) {
+    res.status(400).json({ message: error.message });
   }
 };
 
@@ -37,10 +36,10 @@ const updateBook = async (req, res) => {
 
 // User Story: As a user, I want to use the Book Manager API to delete a book using its ID
 const deleteBook = async (req, res) => {
-  const bookUpdateData = req.body;
+  const bookDeleteData = req.body;
   const bookId = req.params.bookId;
-  const book = await bookService.deleteBook(bookId, bookUpdateData);
-  res.status(200).json(book);
+  const book = await bookService.deleteBook(bookId, bookDeleteData);
+  res.json(book).status(200);
 };
 
 module.exports = {
