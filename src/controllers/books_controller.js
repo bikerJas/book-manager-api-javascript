@@ -36,11 +36,10 @@ const updateBook = async (req, res) => {
 
 // User Story: As a user, I want to use the Book Manager API to delete a book using its ID
 const deleteBook = async (req, res) => {
-  const bookDeleteData = req.body;
   const bookId = req.params.bookId;
-  const book = await bookService.deleteBook(bookId, bookDeleteData);
+  const book = await bookService.deleteBook(bookId);
   if (book) {
-    res.json(book).status(200);
+    res.status(200).json(book);
   } else {
     res.status(404).json("Not found");
   }

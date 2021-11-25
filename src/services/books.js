@@ -1,4 +1,4 @@
-const Book = require('../models/book');
+const Book = require("../models/book");
 
 const getBooks = async () => {
   return Book.findAll();
@@ -6,7 +6,7 @@ const getBooks = async () => {
 
 const getBook = async (bookId) => {
   return Book.findOne({
-    where: {bookId},
+    where: { bookId },
   });
 };
 
@@ -24,8 +24,8 @@ const updateBook = async (bookId, book) => {
 };
 
 // User Story: As a user, I want to use the Book Manager API to delete a book using its ID
-const deleteBook = async (bookId, book) => {
-  return Book.destroy(book, {
+const deleteBook = async (bookId) => {
+  return Book.destroy({
     where: {
       bookId,
     },
@@ -39,4 +39,3 @@ module.exports = {
   updateBook, // User Story 4 - Update Book By Id Solution
   deleteBook,
 };
- 
