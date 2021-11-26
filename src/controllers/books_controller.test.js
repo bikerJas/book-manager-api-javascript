@@ -105,7 +105,7 @@ describe("POST /api/v1/books endpoint", () => {
       .send({ title: "Fantastic Mr. Fox", author: "Roald Dahl" }); // No bookId
 
     // Assert
-    expect(res.statusCode).toEqual(400);
+    expect(res.statusCode).toEqual(422);
   });
 });
 

@@ -22,7 +22,7 @@ const saveBook = async (req, res) => {
     const book = await bookService.saveBook(bookToBeSaved);
     res.status(201).json(book);
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    res.status(422).json({ message: error.message });
   }
 };
 
@@ -38,10 +38,10 @@ const updateBook = async (req, res) => {
 const deleteBook = async (req, res) => {
   const bookId = req.params.bookId;
   const book = await bookService.deleteBook(bookId);
-  if (book) {
+ if (book) {
     res.status(200).json(book);
   } else {
-    res.status(404).json("Not found");
+    res.status(404).json("Not Found");
   }
 };
 
