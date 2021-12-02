@@ -1,0 +1,53 @@
+openapi: '3.0.0'
+info:
+  title: Minimalist Book Manager API
+  description: Need a helping hand to manage your books? Well, you're in luck! This API will let you manage your books with ease!
+  version: 0.1.0
+paths:
+  /api/v1/books:
+    get:
+      summary: Return all books
+      responses:
+        '200':
+          description: A JSON array of books
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: integer
+    post:
+      summary: Add a new book
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                bookId:
+                  type: integer
+                title:
+                  type: string
+                author:
+                  type: string
+      responses:
+        '201':
+          description: New book added
+        '422':
+          description: Error adding book
+  /api/v1/books/{bookId}:
+    get:
+      summary: Get a book by ID
+      parameters:
+        - in: path
+          schema:
+            type: integer
+          name: bookId
+          description: ID of book
+          required: true
+      responses:
+        '200':
+          description: Successfully found book by ID number
+        '404':
+          description: Book not found
+    
